@@ -35,17 +35,14 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ token se userId nikaal
     public Long extractUserId(String token) {
         return Long.parseLong(extractAllClaims(token).getSubject());
     }
 
-    // ✅ token se role nikaal (NEW)
     public String extractRole(String token) {
         return extractAllClaims(token).get("role", String.class);
     }
 
-    // ✅ validate token with id
     public boolean validateToken(String token, Long userId) {
         Long extractedId = extractUserId(token);
         return extractedId.equals(userId) && !isTokenExpired(token);

@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableMethodSecurity // ✅ PreAuthorize enable
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Autowired
@@ -30,7 +30,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ Password Encoder Bean
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
